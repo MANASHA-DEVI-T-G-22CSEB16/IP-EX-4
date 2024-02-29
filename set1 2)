@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Duplicate Elements</title>
+<script>
+function findDuplicates(arr) {
+    let duplicates = {};
+    let result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (duplicates[arr[i]] === undefined) {
+            duplicates[arr[i]] = 1;
+        } else {
+            if (duplicates[arr[i]] === 1) {
+                result.push(arr[i]);
+            }
+            duplicates[arr[i]]++;
+        }
+    }
+
+    return result;
+}
+
+function findAndDisplayDuplicates() {
+    const arrayInput = document.getElementById('arrayInput').value;
+    const array = arrayInput.split(',').map(item => parseInt(item.trim(), 10));
+    const duplicateElements = findDuplicates(array);
+    document.getElementById('result').innerText = "Duplicate elements: " + duplicateElements.join(', ');
+}
+</script>
+</head>
+<body>
+<h2>Find Duplicate Elements</h2>
+<p>Enter an array of numbers separated by commas:</p>
+<input type="text" id="arrayInput" placeholder="e.g., 1, 2, 3, 4, 2, 5">
+<button onclick="findAndDisplayDuplicates()">Find Duplicates</button>
+<p id="result"></p>
+</body>
+</html>
