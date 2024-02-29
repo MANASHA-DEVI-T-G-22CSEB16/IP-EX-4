@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Complex Numbers</title>
+<script>
+function addComplexNumbers(complex1, complex2) {
+    const realPart = complex1.real + complex2.real;
+    const imaginaryPart = complex1.imaginary + complex2.imaginary;
+    return {
+        real: realPart,
+        imaginary: imaginaryPart
+    };
+}
+
+function performComplexAddition() {
+    const real1 = parseFloat(document.getElementById('real1').value);
+    const imaginary1 = parseFloat(document.getElementById('imaginary1').value);
+    const real2 = parseFloat(document.getElementById('real2').value);
+    const imaginary2 = parseFloat(document.getElementById('imaginary2').value);
+
+    const complexNumber1 = { real: real1, imaginary: imaginary1 };
+    const complexNumber2 = { real: real2, imaginary: imaginary2 };
+
+    const sum = addComplexNumbers(complexNumber1, complexNumber2);
+
+    document.getElementById('result').innerText = "Sum: " + sum.real + " + " + sum.imaginary + "i";
+}
+</script>
+</head>
+<body>
+<h2>Add Complex Numbers</h2>
+<label for="real1">Real part of complex number 1:</label>
+<input type="number" id="real1"><br>
+<label for="imaginary1">Imaginary part of complex number 1:</label>
+<input type="number" id="imaginary1"><br>
+<label for="real2">Real part of complex number 2:</label>
+<input type="number" id="real2"><br>
+<label for="imaginary2">Imaginary part of complex number 2:</label>
+<input type="number" id="imaginary2"><br>
+<button onclick="performComplexAddition()">Add Complex Numbers</button>
+<p id="result"></p>
+</body>
+</html>
