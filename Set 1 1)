@@ -1,0 +1,21 @@
+function generateCombinations(str) {
+    let combinations = [];
+
+    function backtrack(index, currentCombination) {
+        if (index === str.length) {
+            combinations.push(currentCombination);
+            return;
+        }
+
+        backtrack(index + 1, currentCombination);
+        backtrack(index + 1, currentCombination + str[index]);
+    }
+
+    backtrack(0, '');
+
+    return combinations;
+}
+
+let inputString = prompt("Enter the string : ");
+let result = generateCombinations(inputString);
+console.log(result);
